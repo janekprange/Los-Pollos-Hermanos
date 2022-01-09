@@ -40,5 +40,6 @@
 		line-height: 62px;
 		width: 264px;
 		text-align: center;
+		text-decoration: none;
 	}
 </style>

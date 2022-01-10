@@ -14,8 +14,4 @@ npm run dev
 
 ### Compiles for production
 
-```bash
-npm run build
-```
-
-The static files are saved in the folder `build/`.
+When you push onto the main branch, the code will automatically be deployed to <https://los-pollos-hermanos.vercel.app/>.

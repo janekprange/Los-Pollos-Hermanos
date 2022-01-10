@@ -15,7 +15,7 @@
 		<input placeholder="Passwort" type="password" bind:value={password} />
 
 		<button type="submit">Login</button>
-		<a href="reservieren/platzwahl">Weiter</a>
+		<a href="reservieren/platzwahl">Weiter ohne Login</a>
 	</form>
 </div>
 

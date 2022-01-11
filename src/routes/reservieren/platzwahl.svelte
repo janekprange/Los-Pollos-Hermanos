@@ -2,13 +2,12 @@
 	import Datepicker from '$lib/components/Datepicker.svelte';
 	import Multiselect from '$lib/components/Multiselect.svelte';
 	import Timepicker from '$lib/components/Timepicker.svelte';
+	import { resDatum, resDauer, resTisch } from '$lib/stores/reservierung';
+	import { afterUpdate } from 'svelte';
 
 	import { fade } from 'svelte/transition';
 
-	let date: Date;
-	let dauer: number; // Dauer in Millisekunden
-	$: dateIsToday = date && Date.now() + 1000 * 60 * 60 * 24 > date.valueOf();
-	let table: number[] = [];
+	$: dateIsToday = $resDatum && Date.now() + 1000 * 60 * 60 * 24 > $resDatum.valueOf();
 
 	const tablenumbers = [
 		1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26,
@@ -22,17 +21,17 @@
 <div class="container">
 	<div class="flex-left">
 		<h1>Platzwahl</h1>
-		<Datepicker bind:date />
-		<Timepicker bind:dauer />
-		{#if date && dauer}
+		<Datepicker bind:date={$resDatum} />
+		<Timepicker bind:dauer={$resDauer} />
+		{#if $resDatum && $resDauer}
 			{#if dateIsToday}
-				<Multiselect id="table" bind:value={table} placeholder="Bitte den Tisch wählen">
+				<Multiselect id="table" bind:value={$resTisch} placeholder="Bitte den Tisch wählen">
 					{#each tablenumbersOccupied as table}
 						<option value={table}>{table}</option>
 					{/each}
 				</Multiselect>
 			{:else}
-				<Multiselect id="table" bind:value={table} placeholder="Bitte den Tisch wählen">
+				<Multiselect id="table" bind:value={$resTisch} placeholder="Bitte den Tisch wählen">
 					{#each tablenumbers as table}
 						<option value={table}>{table}</option>
 					{/each}
@@ -40,11 +39,11 @@
 			{/if}
 		{/if}
 		<br />
-		{#if date && dauer && table.length > 0}
+		{#if $resDatum && $resDauer && $resTisch.length > 0}
 			<a href="checkout">Checkout</a>
 		{/if}
 	</div>
-	{#if date && dauer}
+	{#if $resDatum && $resDauer}
 		{#if dateIsToday}
 			<img in:fade src="/restaurant-belegt.svg" alt="Restaurant Übersicht" />
 		{:else}

@@ -22,11 +22,11 @@
 			o.selected && !value.includes(o.value) && (value = [...value, o.value]);
 			options = [...options, { value: o.value, name: o.textContent }];
 		});
-		// value &&
-		// 	(selected = options.reduce(
-		// 		(obj, op) => (value.includes(op.value) ? { ...obj, [op.value]: op } : obj),
-		// 		{}
-		// 	));
+		value &&
+			(selected = options.reduce(
+				(obj, op) => (value.includes(op.value) ? { ...obj, [op.value]: op } : obj),
+				{}
+			));
 		first = false;
 	});
 
@@ -161,7 +161,7 @@
 		</div>
 	</div>
 
-	<select bind:this={slot} type="multiple" class="hidden"><slot /></select>
+	<select bind:this={slot} type="multiple" class="hidden" multiple><slot /></select>
 
 	{#if showOptions}
 		<ul

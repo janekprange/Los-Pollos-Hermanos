@@ -1,3 +1,15 @@
+<script>
+	import { resDatum, resDauer, resTisch } from '$lib/stores/reservierung';
+
+	import { onMount } from 'svelte';
+
+	onMount(() => {
+		$resDatum = null;
+		$resDauer = null;
+		$resTisch = [];
+	});
+</script>
+
 <div class="container">
 	<img src="/logo.jpg" alt="Logo" />
 	<h1>Willkommen bei Los Pollos Hermanos</h1>

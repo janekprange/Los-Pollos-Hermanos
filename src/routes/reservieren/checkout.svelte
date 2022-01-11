@@ -1,11 +1,28 @@
+<script>
+	import { resDatum, resDauer, resTisch } from '$lib/stores/reservierung';
+
+	const minute = 1000 * 60;
+</script>
+
 <div class="container">
 	<div class="inner-container">
 		<h1>Checkout</h1>
-		<p>Sie haben folgenden Tisch reserviert:</p>
+		{#if $resTisch.length == 1}
+			<p>Sie haben folgenden Tisch reserviert:</p>
+		{:else}
+			<p>Sie haben folgende Tische reserviert:</p>
+		{/if}
 		<ul>
-			<li>Datum</li>
-			<li>Uhrzeit</li>
-			<li>Tischnummer</li>
+			<li>{$resDatum && $resDatum.toLocaleDateString('de-DE')}</li>
+			<li>
+				{$resDatum && $resDatum.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })}
+			</li>
+			<li>{$resDauer / minute} Minuten</li>
+			{#if $resTisch.length == 1}
+				<li>Tisch Nummer {$resTisch}</li>
+			{:else}
+				<li>Die Tische mit den Nummern {$resTisch}</li>
+			{/if}
 		</ul>
 		<div class="flex-centering">
 			<a href="/">Bestätigen</a>
@@ -80,10 +97,10 @@
 		transition: font-size 0.3s ease, background-color 0.3s ease;
 	}
 
-	li:hover {
+	/* li:hover {
 		font-size: 30px;
 		background: #f6f6f6;
-	}
+	} */
 
 	a {
 		display: flex;

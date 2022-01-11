@@ -291,6 +291,7 @@
 		margin-block-start: 0;
 		max-height: 70vh;
 		overflow: auto;
+		height: 30vh;
 		padding-inline-start: 0;
 		position: absolute;
 		top: calc(100% + 1px);

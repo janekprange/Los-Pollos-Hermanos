@@ -1,15 +1,16 @@
 <script lang="ts">
 	import Datepicker from '$lib/components/Datepicker.svelte';
 	import Timepicker from '$lib/components/Timepicker.svelte';
+
 	let date: Date;
-	let dauer: number;
+	let dauer: number; // Dauer in Millisekunden
 </script>
 
 <div class="container">
 	<div class="flex-left">
 		<h1>Platzwahl</h1>
 		<Datepicker bind:date />
-		<input placeholder="Bitte Dauer wählen" type="number" bind:value={dauer} />
+		<Timepicker bind:dauer />
 	</div>
 </div>
 
@@ -24,21 +25,6 @@
 
 	.flex-left {
 		background-color: gray;
-	}
-
-	input {
-		margin: 1em;
-		border: 1px solid #8492a6;
-		border-radius: 5px;
-		width: 266px;
-		height: 47px;
-
-		font-family: Lato;
-		font-size: 18px;
-		line-height: 62px;
-		width: 267px;
-		text-align: left;
-		padding-left: 1em;
 	}
 
 	h1 {

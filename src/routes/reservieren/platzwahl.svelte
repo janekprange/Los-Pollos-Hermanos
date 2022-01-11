@@ -10,7 +10,6 @@
 	$: dateIsToday = date && Date.now() + 1000 * 60 * 60 * 24 > date.valueOf();
 	let table: number[] = [];
 
-	// const tablenumbers = Array.from({ length: 39 }, (v, k) => k + 1);
 	const tablenumbers = [
 		1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26,
 		27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37
@@ -39,6 +38,10 @@
 					{/each}
 				</Multiselect>
 			{/if}
+		{/if}
+		<br />
+		{#if date && dauer && table.length > 0}
+			<a href="checkout">Checkout</a>
 		{/if}
 	</div>
 	{#if date && dauer}
@@ -72,5 +75,22 @@
 
 	img {
 		width: 70%;
+	}
+
+	a {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: #47525e;
+		border-radius: 5px;
+		width: 267px;
+		height: 46px;
+		margin-top: 100%;
+		margin-left: 1.5em;
+
+		color: #ffffff;
+		font-family: Lato;
+		font-size: 18px;
+		text-decoration: none;
 	}
 </style>

@@ -5,7 +5,7 @@
 
 	onMount(() => {
 		$resDatum = null;
-		$resDauer = null;
+		$resDauer = 0;
 		$resTisch = [];
 	});
 </script>

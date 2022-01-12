@@ -3,7 +3,6 @@
 	import Multiselect from '$lib/components/Multiselect.svelte';
 	import Timepicker from '$lib/components/Timepicker.svelte';
 	import { resDatum, resDauer, resTisch } from '$lib/stores/reservierung';
-	import { afterUpdate } from 'svelte';
 
 	import { fade } from 'svelte/transition';
 
@@ -16,6 +15,10 @@
 	const tablenumbersOccupied = [
 		2, 3, 4, 5, 9, 10, 13, 14, 16, 18, 19, 20, 24, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37
 	];
+
+	function isValidDate(d) {
+		return d instanceof Date && !isNaN(d.valueOf());
+	}
 </script>
 
 <div class="container">
@@ -23,7 +26,7 @@
 		<h1>Platzwahl</h1>
 		<Datepicker bind:date={$resDatum} />
 		<Timepicker bind:dauer={$resDauer} />
-		{#if $resDatum && $resDauer}
+		{#if isValidDate($resDatum) && $resDauer}
 			{#if dateIsToday}
 				<Multiselect id="table" bind:value={$resTisch} placeholder="Bitte den Tisch wählen">
 					{#each tablenumbersOccupied as table}
@@ -39,11 +42,11 @@
 			{/if}
 		{/if}
 		<br />
-		{#if $resDatum && $resDauer && $resTisch.length > 0}
+		{#if isValidDate($resDatum) && $resDauer && $resTisch.length > 0}
 			<a href="checkout">Checkout</a>
 		{/if}
 	</div>
-	{#if $resDatum && $resDauer}
+	{#if isValidDate($resDatum) && $resDauer}
 		{#if dateIsToday}
 			<img in:fade src="/restaurant-belegt.svg" alt="Restaurant Übersicht" />
 		{:else}

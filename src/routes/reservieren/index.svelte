@@ -1,24 +1,18 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 
-	import { user } from '$lib/stores/reservierung.js';
-
-	$user = {
-		name: '',
-		email: '',
-		telephone: ''
-	};
+	import { username, usermail, usertelephone } from '$lib/stores/reservierung.js';
 
 	function login() {
-		if (!$user.name) {
+		if (!$username) {
 			alert(`Es muss ein Name angegeben werden.`);
 			return;
 		}
-		if (!$user.email) {
+		if (!$usermail) {
 			alert(`Es muss eine E-Mail angegeben werden.`);
 			return;
 		}
-		if (!$user.telephone) {
+		if (!$usertelephone) {
 			alert(`Es muss eine Telefonnummer angegeben werden.`);
 			return;
 		}
@@ -31,9 +25,9 @@
 	<p>Bitte tragen Sie Ihre Kontaktdaten ein.</p>
 
 	<form class="input-flex" on:submit|preventDefault={login}>
-		<input placeholder="Name" bind:value={$user.name} />
-		<input placeholder="E-Mail" type="email" bind:value={$user.email} />
-		<input placeholder="Telefonnummer" type="tel" bind:value={$user.telephone} />
+		<input placeholder="Name" bind:value={$username} />
+		<input placeholder="E-Mail" type="email" bind:value={$usermail} />
+		<input placeholder="Telefonnummer" type="tel" bind:value={$usertelephone} />
 
 		<button type="submit">Weiter</button>
 	</form>

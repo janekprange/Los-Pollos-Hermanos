@@ -2,7 +2,14 @@
 	import Datepicker from '$lib/components/Datepicker.svelte';
 	import Multiselect from '$lib/components/Multiselect.svelte';
 	import Timepicker from '$lib/components/Timepicker.svelte';
-	import { resDatum, resDauer, resTisch } from '$lib/stores/reservierung';
+	import {
+		resDatum,
+		resDauer,
+		resTisch,
+		usermail,
+		username,
+		usertelephone
+	} from '$lib/stores/reservierung';
 
 	import { fade } from 'svelte/transition';
 
@@ -54,6 +61,12 @@
 		{/if}
 	{/if}
 </div>
+{#if $username && $usermail && usertelephone}
+	<div class="userinfo">
+		<p style="margin-bottom: 0">Angemeldet als: {$username}</p>
+		<p>{$usermail} | {$usertelephone}</p>
+	</div>
+{/if}
 
 <style>
 	.container {
@@ -94,5 +107,25 @@
 		font-family: Lato;
 		font-size: 18px;
 		text-decoration: none;
+	}
+
+	.userinfo {
+		position: fixed;
+		bottom: 0;
+		width: 30%;
+		background-color: white;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		border-radius: 10px 10px 0 0;
+		border: 2px solid black;
+	}
+
+	.userinfo > p {
+		color: #8190a5;
+		font-family: Lato;
+		font-size: 18px;
+		line-height: 28px;
+		margin: 10px;
 	}
 </style>

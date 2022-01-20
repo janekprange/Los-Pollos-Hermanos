@@ -16,7 +16,17 @@ resTisch.subscribe((val) => {
   if (browser) return (sessionStorage.tisch = val)
 })
 
-export const user = writable(browser && JSON.parse(sessionStorage.getItem("user")))
-user.subscribe((val) => {
-  if (browser) return (sessionStorage.user = val)
+export const username = writable(browser && sessionStorage.getItem("username"))
+username.subscribe((val) => {
+  if (browser) return (sessionStorage.username = val)
+})
+
+export const usermail = writable(browser && sessionStorage.getItem("usermail"))
+usermail.subscribe((val) => {
+  if (browser) return (sessionStorage.usermail = val)
+})
+
+export const usertelephone = writable(browser && sessionStorage.getItem("usertelephone"))
+usertelephone.subscribe((val) => {
+  if (browser) return (sessionStorage.usertelephone = val)
 })

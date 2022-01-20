@@ -1,5 +1,12 @@
 <script>
-	import { resDatum, resDauer, resTisch } from '$lib/stores/reservierung';
+	import {
+		resDatum,
+		resDauer,
+		resTisch,
+		username,
+		usermail,
+		usertelephone
+	} from '$lib/stores/reservierung';
 
 	import { onMount } from 'svelte';
 
@@ -7,6 +14,9 @@
 		$resDatum = null;
 		$resDauer = 0;
 		$resTisch = [];
+		$username = '';
+		$usermail = '';
+		$usertelephone = '';
 	});
 </script>
 

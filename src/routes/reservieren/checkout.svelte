@@ -1,5 +1,12 @@
 <script>
-	import { resDatum, resDauer, resTisch } from '$lib/stores/reservierung';
+	import {
+		resDatum,
+		resDauer,
+		resTisch,
+		username,
+		usermail,
+		usertelephone
+	} from '$lib/stores/reservierung';
 
 	const minute = 1000 * 60;
 </script>
@@ -29,6 +36,12 @@
 		</div>
 	</div>
 </div>
+{#if $username && $usermail && usertelephone}
+	<div class="userinfo">
+		<p style="margin-bottom: 0">Angemeldet als: {$username}</p>
+		<p>{$usermail} | {$usertelephone}</p>
+	</div>
+{/if}
 
 <style>
 	.container {
@@ -116,5 +129,25 @@
 		font-family: Lato;
 		font-size: 18px;
 		text-decoration: none;
+	}
+
+	.userinfo {
+		position: fixed;
+		bottom: 0;
+		width: 30%;
+		background-color: white;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		border-radius: 10px 10px 0 0;
+		border: 2px solid black;
+	}
+
+	.userinfo > p {
+		color: #8190a5;
+		font-family: Lato;
+		font-size: 18px;
+		line-height: 28px;
+		margin: 10px;
 	}
 </style>

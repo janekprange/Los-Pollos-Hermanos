@@ -15,3 +15,8 @@ export const resTisch = writable(browser && JSON.parse(`[${localStorage.getItem(
 resTisch.subscribe((val) => {
   if (browser) return (sessionStorage.tisch = val)
 })
+
+export const user = writable(browser && JSON.parse(localStorage.getItem("user")))
+user.subscribe((val) => {
+  if (browser) return (sessionStorage.user = val)
+})

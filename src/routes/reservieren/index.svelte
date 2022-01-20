@@ -1,21 +1,41 @@
 <script lang="ts">
-	let name = '';
-	let password = '';
+	import { goto } from '$app/navigation';
+
+	import { user } from '$lib/stores/reservierung.js';
+
+	$user = {
+		name: '',
+		email: '',
+		telephone: ''
+	};
+
 	function login() {
-		alert(`Tut mir leid, ${name}, ein Login ist nicht möglich.`);
+		if (!$user.name) {
+			alert(`Es muss ein Name angegeben werden.`);
+			return;
+		}
+		if (!$user.email) {
+			alert(`Es muss eine E-Mail angegeben werden.`);
+			return;
+		}
+		if (!$user.telephone) {
+			alert(`Es muss eine Telefonnummer angegeben werden.`);
+			return;
+		}
+		goto('reservieren/platzwahl');
 	}
 </script>
 
 <div class="container">
 	<h1>Anmeldung</h1>
-	<p>Melden Sie sich an, um Punkte für diese Reservierung zu erhalten</p>
+	<p>Bitte tragen Sie Ihre Kontaktdaten ein.</p>
 
 	<form class="input-flex" on:submit|preventDefault={login}>
-		<input placeholder="Name" bind:value={name} />
-		<input placeholder="Passwort" type="password" bind:value={password} />
+		<input placeholder="Name" bind:value={$user.name} />
+		<input placeholder="E-Mail" type="email" bind:value={$user.email} />
+		<input placeholder="Telefonnummer" type="tel" bind:value={$user.telephone} />
 
-		<button type="submit">Login</button>
-		<a href="reservieren/platzwahl">Weiter ohne Login</a>
+		<button type="submit">Weiter</button>
 	</form>
 </div>
 
@@ -86,7 +106,7 @@
 		text-align: center;
 	}
 
-	a {
+	/* a {
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -100,5 +120,5 @@
 		font-family: Lato;
 		font-size: 18px;
 		text-decoration: none;
-	}
+	} */
 </style>

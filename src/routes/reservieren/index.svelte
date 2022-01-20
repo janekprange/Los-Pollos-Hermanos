@@ -21,7 +21,7 @@
 </script>
 
 <div class="container">
-	<h1>Anmeldung</h1>
+	<h1>Kontaktdaten</h1>
 	<p>Bitte tragen Sie Ihre Kontaktdaten ein.</p>
 
 	<form class="input-flex" on:submit|preventDefault={login}>

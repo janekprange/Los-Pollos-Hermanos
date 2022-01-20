@@ -32,7 +32,7 @@
 			{/if}
 		</ul>
 		<div class="flex-centering">
-			<a href="/">Bestätigen</a>
+			<a href="erfolg">Bestätigen</a>
 		</div>
 	</div>
 </div>

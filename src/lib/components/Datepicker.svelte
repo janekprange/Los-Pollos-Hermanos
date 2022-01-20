@@ -14,6 +14,8 @@
 		locale: German,
 		minDate: new Date(Math.round(Date.now() / roundTime) * roundTime),
 		maxDate: new Date(Date.now() + maxFuture),
+		minTime: '13:00',
+		maxTime: '22:30',
 
 		onClose: function (selectedDates, dateStr, instance) {
 			console.log('n');

@@ -27,29 +27,28 @@
 	<div class="link">
 		<a href="reservieren">Reservieren</a>
 	</div>
+	<footer class="footer-basic-centered">
+		<p class="footer-company-motto">
+			Los Pollos Hermanos, where something delicious is always cooking.
+		</p>
+
+		<p class="footer-links">
+			<a href="/">Speisekarte</a>
+			·
+			<a href="/">Lieferservice</a>
+			·
+			<a href="/">Impressum</a>
+		</p>
+
+		<p class="footer-company-name">Los Pollos Hermanos © 2021</p>
+	</footer>
 </div>
-<footer class="footer-basic-centered">
-	<p class="footer-company-motto">
-		Los Pollos Hermanos, where something delicious is always cooking.
-	</p>
-
-	<p class="footer-links">
-		<a href="/">Speisekarte</a>
-		·
-		<a href="/">Lieferservice</a>
-		·
-		<a href="/">Impressum</a>
-	</p>
-
-	<p class="footer-company-name">Los Pollos Hermanos © 2021</p>
-</footer>
 
 <style>
 	.container {
-		height: 100%;
+		min-height: 100vh;
 		display: flex;
 		flex-direction: column;
-		justify-content: baseline;
 	}
 
 	img {
@@ -66,6 +65,7 @@
 	.link {
 		flex-grow: 2;
 		text-align: center;
+		margin-bottom: 1em;
 	}
 	.link > a {
 		background-color: #b8977e;
@@ -81,19 +81,10 @@
 	}
 
 	.footer-basic-centered {
-		box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
-		box-sizing: border-box;
-		width: 100%;
+		flex-grow: 2;
 		text-align: center;
 		font: normal 18px sans-serif;
-		padding: 45px;
-		margin-top: 80px;
-	}
-
-	footer {
-		position: fixed;
-		bottom: 0;
-		display: block;
+		margin-top: auto;
 	}
 
 	.footer-basic-centered .footer-company-motto {

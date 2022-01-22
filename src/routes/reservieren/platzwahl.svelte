@@ -47,6 +47,13 @@
 					{/each}
 				</Multiselect>
 			{/if}
+			<div class="small-screen">
+				{#if dateIsToday}
+					<img in:fade src="/restaurant-belegt.svg" alt="Restaurant Übersicht" />
+				{:else}
+					<img in:fade src="/restaurant.svg" alt="Restaurant Übersicht" />
+				{/if}
+			</div>
 		{/if}
 		<br />
 		{#if isValidDate($resDatum) && $resDauer && $resTisch.length > 0}
@@ -54,11 +61,13 @@
 		{/if}
 	</div>
 	{#if isValidDate($resDatum) && $resDauer}
-		{#if dateIsToday}
-			<img in:fade src="/restaurant-belegt.svg" alt="Restaurant Übersicht" />
-		{:else}
-			<img in:fade src="/restaurant.svg" alt="Restaurant Übersicht" />
-		{/if}
+		<div class="wide-screen">
+			{#if dateIsToday}
+				<img in:fade src="/restaurant-belegt.svg" alt="Restaurant Übersicht" />
+			{:else}
+				<img in:fade src="/restaurant.svg" alt="Restaurant Übersicht" />
+			{/if}
+		</div>
 	{/if}
 </div>
 {#if $username && $usermail && usertelephone}
@@ -69,16 +78,43 @@
 {/if}
 
 <style>
+	@media screen and (max-width: 600px) {
+		.flex-left {
+			width: 100%;
+		}
+		.wide-screen {
+			display: none;
+		}
+		.small-screen {
+			display: inline-block !important;
+			width: fit-content;
+			background-color: white;
+		}
+		.userinfo {
+			display: none !important;
+		}
+		/* img:hover {
+			-webkit-transform: scale(1.5); 
+			transform: scale(1.5);
+		} */
+	}
 	.container {
 		background-color: white;
 		/* padding: 1em 2em; */
 		display: flex;
-		width: 90%;
-		height: 90%;
+		width: 90vw;
+		min-height: 90vh;
 	}
 
 	.flex-left {
 		background-color: gray;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.small-screen {
+		display: none;
 	}
 
 	h1 {
@@ -89,7 +125,8 @@
 	}
 
 	img {
-		width: 70%;
+		width: 100%;
+		max-width: 1000px;
 	}
 
 	a {
@@ -100,8 +137,8 @@
 		border-radius: 5px;
 		width: 267px;
 		height: 46px;
-		margin-top: 100%;
-		margin-left: 1.5em;
+		margin-top: auto;
+		margin-bottom: 2em;
 
 		color: #ffffff;
 		font-family: Lato;

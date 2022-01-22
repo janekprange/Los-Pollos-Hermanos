@@ -12,28 +12,26 @@
 </script>
 
 <div class="container">
-	<div class="inner-container">
-		<h1>Checkout</h1>
+	<h1>Checkout</h1>
+	{#if $resTisch.length == 1}
+		<p>Sie haben folgenden Tisch reserviert:</p>
+	{:else}
+		<p>Sie haben folgende Tische reserviert:</p>
+	{/if}
+	<ul>
+		<li>{$resDatum && $resDatum.toLocaleDateString('de-DE')}</li>
+		<li>
+			{$resDatum && $resDatum.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })}
+		</li>
+		<li>{$resDauer / minute} Minuten</li>
 		{#if $resTisch.length == 1}
-			<p>Sie haben folgenden Tisch reserviert:</p>
+			<li>Tisch Nummer {$resTisch}</li>
 		{:else}
-			<p>Sie haben folgende Tische reserviert:</p>
+			<li>Die Tische mit den Nummern {$resTisch}</li>
 		{/if}
-		<ul>
-			<li>{$resDatum && $resDatum.toLocaleDateString('de-DE')}</li>
-			<li>
-				{$resDatum && $resDatum.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })}
-			</li>
-			<li>{$resDauer / minute} Minuten</li>
-			{#if $resTisch.length == 1}
-				<li>Tisch Nummer {$resTisch}</li>
-			{:else}
-				<li>Die Tische mit den Nummern {$resTisch}</li>
-			{/if}
-		</ul>
-		<div class="flex-centering">
-			<a href="erfolg">Bestätigen</a>
-		</div>
+	</ul>
+	<div class="flex-centering">
+		<a href="erfolg">Bestätigen</a>
 	</div>
 </div>
 {#if $username && $usermail && usertelephone}
@@ -44,12 +42,26 @@
 {/if}
 
 <style>
+	@media screen and (max-width: 600px) {
+		.container {
+			width: 100% !important;
+		}
+		.userinfo {
+			display: none !important;
+		}
+	}
+	@media screen and (max-height: 650px) {
+		.userinfo {
+			display: none !important;
+		}
+	}
 	.container {
 		background-color: white;
 		display: flex;
+		flex-direction: column;
 		justify-content: center;
 		width: 90%;
-		height: 90%;
+		min-height: 35em;
 	}
 
 	.flex-centering {
@@ -62,9 +74,8 @@
 		font-family: Lato;
 		font-size: 40px;
 		line-height: 51px;
-		width: 557px;
 		text-align: center;
-		margin-top: 5em;
+		margin-top: 2em;
 	}
 
 	p {
@@ -72,7 +83,6 @@
 		font-family: Lato;
 		font-size: 18px;
 		line-height: 28px;
-		width: 15em;
 		margin: auto;
 		text-align: center;
 	}
@@ -123,7 +133,8 @@
 		border-radius: 5px;
 		width: 267px;
 		height: 46px;
-		margin-top: 20%;
+		margin-top: auto;
+		margin-bottom: 2em;
 
 		color: #ffffff;
 		font-family: Lato;

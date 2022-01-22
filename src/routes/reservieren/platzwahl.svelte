@@ -36,6 +36,10 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Los Pollos Hermanos - Platzwahl</title>
+</svelte:head>
+
 <div class="container">
 	<div class="flex-left">
 		<h1>Platzwahl</h1>

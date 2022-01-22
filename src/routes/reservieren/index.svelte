@@ -20,6 +20,10 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Los Pollos Hermanos - Login</title>
+</svelte:head>
+
 <div class="container">
 	<h1>Kontaktdaten</h1>
 	<p>Bitte tragen Sie Ihre Kontaktdaten ein.</p>

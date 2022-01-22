@@ -20,6 +20,10 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Los Pollos Hermanos</title>
+</svelte:head>
+
 <div class="container">
 	<img src="/logo.jpg" alt="Logo" />
 	<h1>Willkommen bei Los Pollos Hermanos</h1>

@@ -11,6 +11,10 @@
 	const minute = 1000 * 60;
 </script>
 
+<svelte:head>
+	<title>Los Pollos Hermanos - Checkout</title>
+</svelte:head>
+
 <div class="container">
 	<h1>Checkout</h1>
 	{#if $resTisch.length == 1}

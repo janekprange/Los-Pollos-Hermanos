@@ -15,6 +15,8 @@
 
 	$: dateIsToday = $resDatum && Date.now() + 1000 * 60 * 60 * 24 > $resDatum.valueOf();
 
+	$: placeholder = $resTisch.length >= 4 ? 'Maximal 4 Tische' : 'Bitte den Tisch wählen';
+
 	const tablenumbers = [
 		1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26,
 		27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37
@@ -35,13 +37,23 @@
 		<Timepicker bind:dauer={$resDauer} />
 		{#if isValidDate($resDatum) && $resDauer}
 			{#if dateIsToday}
-				<Multiselect id="table" bind:value={$resTisch} placeholder="Bitte den Tisch wählen">
+				<Multiselect
+					id="table"
+					bind:value={$resTisch}
+					bind:placeholder
+					disabled={$resTisch.length >= 4}
+				>
 					{#each tablenumbersOccupied as table}
 						<option value={table}>{table}</option>
 					{/each}
 				</Multiselect>
 			{:else}
-				<Multiselect id="table" bind:value={$resTisch} placeholder="Bitte den Tisch wählen">
+				<Multiselect
+					id="table"
+					bind:value={$resTisch}
+					bind:placeholder
+					disabled={$resTisch.length >= 4}
+				>
 					{#each tablenumbers as table}
 						<option value={table}>{table}</option>
 					{/each}

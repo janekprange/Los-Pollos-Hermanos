@@ -5,6 +5,7 @@
 	export let value = [];
 	export let readonly = false;
 	export let placeholder = '';
+	export let disabled;
 
 	let input,
 		inputValue,
@@ -14,6 +15,7 @@
 		selected = {},
 		first = true,
 		slot;
+	$: if (disabled) showOptions = false;
 	const iconClearPath =
 		'M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z';
 
@@ -50,6 +52,7 @@
 
 	function optionsVisibility(show) {
 		if (readonly) return;
+		if (disabled) return;
 		if (typeof show === 'boolean') {
 			showOptions = show;
 			show && input.focus();
@@ -138,6 +141,7 @@
 					on:keyup={handleKeyup}
 					on:blur={handleBlur}
 					{placeholder}
+					disabled
 				/>
 				<div class="remove-all" title="Remove All" class:hidden={!Object.keys(selected).length}>
 					<svg
@@ -187,7 +191,7 @@
 		background-color: white;
 		border-bottom: 1px solid hsl(0, 0%, 70%);
 		position: relative;
-		max-width: 290px;
+		width: 290px;
 		margin: 1em;
 		border: 1px solid #8492a6;
 		border-radius: 5px;

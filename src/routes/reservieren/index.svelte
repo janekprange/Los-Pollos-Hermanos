@@ -36,7 +36,19 @@
 <style>
 	.container {
 		background-color: white;
-		padding: 1em 2em;
+		padding-bottom: 1em;
+	}
+
+	@media screen and (min-width: 1000px) {
+		.container {
+			width: 800px;
+		}
+	}
+	@media screen and (max-width: 1000px) {
+		.container {
+			min-width: 70%;
+			display: inline-block;
+		}
 	}
 
 	h1 {
@@ -44,7 +56,6 @@
 		font-family: Lato;
 		font-size: 40px;
 		line-height: 51px;
-		width: 557px;
 		text-align: center;
 	}
 

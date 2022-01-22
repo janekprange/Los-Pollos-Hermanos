@@ -141,7 +141,7 @@
 					on:keyup={handleKeyup}
 					on:blur={handleBlur}
 					{placeholder}
-					disabled
+					disabled={!!disabled}
 				/>
 				<div class="remove-all" title="Remove All" class:hidden={!Object.keys(selected).length}>
 					<svg

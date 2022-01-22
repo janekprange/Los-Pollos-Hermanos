@@ -28,6 +28,12 @@
 	function isValidDate(d) {
 		return d instanceof Date && !isNaN(d.valueOf());
 	}
+
+	function abortReservation() {
+		$resDatum = null;
+		$resDauer = 0;
+		$resTisch = [];
+	}
 </script>
 
 <div class="container">
@@ -69,6 +75,7 @@
 		{/if}
 		<br />
 		{#if isValidDate($resDatum) && $resDauer && $resTisch.length > 0}
+			<button on:click={abortReservation}>Abbrechen</button>
 			<a href="checkout">Checkout</a>
 		{/if}
 	</div>
@@ -141,7 +148,8 @@
 		max-width: 1000px;
 	}
 
-	a {
+	a,
+	button {
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -149,13 +157,17 @@
 		border-radius: 5px;
 		width: 267px;
 		height: 46px;
-		margin-top: auto;
 		margin-bottom: 2em;
 
 		color: #ffffff;
 		font-family: Lato;
 		font-size: 18px;
 		text-decoration: none;
+	}
+
+	button {
+		margin-top: auto;
+		border: none;
 	}
 
 	.userinfo {

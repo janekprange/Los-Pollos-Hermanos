@@ -17,9 +17,7 @@
 		minTime: '13:00',
 		maxTime: '22:30',
 
-		onClose: function (selectedDates, dateStr, instance) {
-			console.log('n');
-		}
+		onClose: function (selectedDates, dateStr, instance) {}
 	};
 </script>
 

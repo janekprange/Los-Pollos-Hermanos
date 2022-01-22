@@ -1,3 +1,15 @@
+<script>
+	import { resDatum, resDauer, resTisch } from '$lib/stores/reservierung';
+
+	import { onMount } from 'svelte';
+
+	onMount(() => {
+		$resDatum = null;
+		$resDauer = 0;
+		$resTisch = [];
+	});
+</script>
+
 <div class="container">
 	<img src="/logo.jpg" alt="Logo" />
 	<h1>Reservierung erfolgreich</h1>
@@ -9,19 +21,20 @@
 
 <style>
 	.container {
-		height: 100%;
+		height: 80vh;
 		display: flex;
 		flex-direction: column;
 		justify-content: baseline;
 	}
 
 	img {
-		max-width: 300px;
-		margin: auto;
+		width: auto;
+		height: auto;
+		flex-grow: 1;
 	}
 
 	h1 {
-		flex-grow: 1;
+		flex-grow: 2;
 		text-align: center;
 		color: white;
 	}
